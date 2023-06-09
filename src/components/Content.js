@@ -18,8 +18,7 @@ function Content({
       // const url = `/courses/${courseData[activeCourse].name}/${
       //   courseData[activeCourse].topics[activeTopic]
       // }/${mode.toLowerCase()}.md`;
-
-      const url = `${process.env.PUBLIC_URL}/public/courses/${
+      const url = `${process.env.PUBLIC_URL}/courses/${
         courseData[activeCourse].name
       }/${
         courseData[activeCourse].topics[activeTopic]
