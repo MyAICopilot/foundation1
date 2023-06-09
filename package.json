@@ -1,7 +1,7 @@
 {
   "name": "my-app_v8",
   "version": "0.1.0",
-  "homepage": "https://MyAICopilot.github.io/foundation",
+  "homepage": "https://MyAICopilot.github.io/foundation/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
