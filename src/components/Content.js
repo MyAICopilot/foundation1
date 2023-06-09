@@ -15,10 +15,17 @@ function Content({
 
   useEffect(() => {
     if (activeCourse !== null && activeTopic !== null) {
-      const url = `/courses/${courseData[activeCourse].name}/${
+      // const url = `/courses/${courseData[activeCourse].name}/${
+      //   courseData[activeCourse].topics[activeTopic]
+      // }/${mode.toLowerCase()}.md`;
+      // console.log(url);
+
+      const url = `${process.env.PUBLIC_URL}/courses/${
+        courseData[activeCourse].name
+      }/${
         courseData[activeCourse].topics[activeTopic]
       }/${mode.toLowerCase()}.md`;
-      // console.log(url);
+
       fetch(
         `/courses/${courseData[activeCourse].name}/${
           courseData[activeCourse].topics[activeTopic]
