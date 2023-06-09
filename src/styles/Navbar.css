@@ -1,0 +1,64 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #202123;
+  padding: 0px;
+  width: 100%;
+  height: 5%; /* Adjust the height value as needed */
+  border: #ececf1;
+  border-bottom: 1px solid #40414f; /* Add border style */
+}
+
+.nav-item {
+  text-decoration: none;
+  color: #9294b9;
+  font-size: 18px;
+  flex-grow: 1; /* Added */
+  height: 30px;
+  padding-top: 2px;
+  font-weight: bold;
+}
+
+.nav-item:last-child {
+  margin-right: 0; /* Added */
+}
+
+.nav-item:hover {
+  background-color: #32333d;
+  height: 30px;
+  border-radius: 20px;
+}
+
+.nav-item.active {
+  text-decoration: none;
+  background-color: #515264;
+  color: #b3b5e6;
+
+  height: 30px;
+  border-radius: 20px;
+}
+
+.link-disabled {
+  background-color: #40414f !important;
+  color: #575656;
+  height: 30px;
+  border-radius: 20px;
+  cursor: not-allowed;
+}
+
+.account-modal .modal-content {
+  color: #ffffff;
+  background-color: #40414f;
+  width: 800px;
+}
+
+.expandable-input {
+  resize: both;
+  overflow: auto;
+  max-height: 100px;
+  min-width: 750px;
+  max-width: 750px;
+  background-color: #d4d4d4;
+  margin-bottom: 30px;
+}

@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+  height: 100vh;
+  overflow: hidden; /* Prevent container from scrolling */
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #202123;
+}
+
+.panes-container {
+  display: grid;
+  grid-template-columns: 20% 50% 30%;
+  height: calc(100%); /* Subtract navigation bar height */
+  overflow: hidden;
+  width: 100%;
+}
+
+.my-swal {
+  max-width: 300px;
+  height: 200px;
+  background-color: #2d2a49;
+  color: #c2c2c2;
+}

@@ -1,0 +1,62 @@
+.left-pane {
+  overflow: auto;
+  border: none;
+  background-color: #202123;
+  color: #d5d5da;
+  height: 95%;
+  min-width: 150px;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.title-leftpane {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 20px;
+  color: #9294b9;
+  background-color: #2d303b;
+  padding: 10px;
+  border-radius: 20px;
+  height: 40px;
+}
+
+.left-pane h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #d5d5da;
+  text-align: left;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.course:hover {
+  background-color: #2e2e35;
+}
+
+.topic:hover {
+  background-color: #5e5f75;
+}
+
+.active-topic {
+  background-color: #57586d;
+  color: #f9f9ff;
+}
+
+.course {
+  margin-bottom: 10px;
+  padding: 5px;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-radius: 15px;
+}
+
+.topic {
+  color: #ececf1;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  padding: 2px;
+  padding-left: 15px;
+  text-align: left;
+  border-radius: 10px;
+}
