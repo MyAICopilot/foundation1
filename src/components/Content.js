@@ -18,19 +18,16 @@ function Content({
       // const url = `/courses/${courseData[activeCourse].name}/${
       //   courseData[activeCourse].topics[activeTopic]
       // }/${mode.toLowerCase()}.md`;
-      // console.log(url);
 
-      const url = `${process.env.PUBLIC_URL}/courses/${
+      const url = `${process.env.PUBLIC_URL}/public/courses/${
         courseData[activeCourse].name
       }/${
         courseData[activeCourse].topics[activeTopic]
       }/${mode.toLowerCase()}.md`;
 
-      fetch(
-        `/courses/${courseData[activeCourse].name}/${
-          courseData[activeCourse].topics[activeTopic]
-        }/${mode.toLowerCase()}.md`
-      )
+      console.log(url);
+
+      fetch(url)
         .then((response) => response.text())
         .then((text) => setmyContent(text))
         .catch((err) => console.log(err));
