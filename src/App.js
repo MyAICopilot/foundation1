@@ -139,52 +139,48 @@ function App() {
 
   return (
     <div className="App">
-      {user ? (
-        <>
-          <Navbar
-            handleLearn={handleLearn}
-            handleQuiz={handleQuiz}
-            handleApply={handleApply}
+      <>
+        <Navbar
+          handleLearn={handleLearn}
+          handleQuiz={handleQuiz}
+          handleApply={handleApply}
+          mode={mode}
+          loading={loading}
+          isWaitingForResponse={isWaitingForResponse} // Add this line
+        />
+        <div className="panes-container">
+          <Leftpane
+            selectedFile={selectedFile}
+            setSelectedFile={setSelectedFile}
             mode={mode}
+            setUserPrompt={setUserPrompt}
             loading={loading}
             isWaitingForResponse={isWaitingForResponse} // Add this line
+            setFileClicked={setFileClicked}
+            setmyContent={setmyContent}
+            courseData={courseData}
+            onTopicClick={handleTopicClick}
           />
-          <div className="panes-container">
-            <Leftpane
-              selectedFile={selectedFile}
-              setSelectedFile={setSelectedFile}
-              mode={mode}
-              setUserPrompt={setUserPrompt}
-              loading={loading}
-              isWaitingForResponse={isWaitingForResponse} // Add this line
-              setFileClicked={setFileClicked}
-              setmyContent={setmyContent}
-              courseData={courseData}
-              onTopicClick={handleTopicClick}
+          <Content
+            myContent={myContent}
+            setmyContent={setmyContent}
+            courseData={courseData}
+            activeCourse={activeCourse}
+            activeTopic={activeTopic}
+            mode={mode}
+          />
+          <div className="chatbox-container">
+            <Chatbox
+              handleSendMessage_chat={handleSendMessage_chat}
+              messages={messages}
+              setInputValue={setInputValue}
+              inputValue={inputValue} // add this line
+              handleClearChat={handleClearChat}
+              isWaitingForResponse={isWaitingForResponse}
             />
-            <Content
-              myContent={myContent}
-              setmyContent={setmyContent}
-              courseData={courseData}
-              activeCourse={activeCourse}
-              activeTopic={activeTopic}
-              mode={mode}
-            />
-            <div className="chatbox-container">
-              <Chatbox
-                handleSendMessage_chat={handleSendMessage_chat}
-                messages={messages}
-                setInputValue={setInputValue}
-                inputValue={inputValue} // add this line
-                handleClearChat={handleClearChat}
-                isWaitingForResponse={isWaitingForResponse}
-              />
-            </div>
           </div>
-        </>
-      ) : (
-        <Loginform onLogin={handleLogin} />
-      )}
+        </div>
+      </>
     </div>
   );
 }
