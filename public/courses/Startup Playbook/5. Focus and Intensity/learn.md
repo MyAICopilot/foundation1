@@ -1,4 +1,6 @@
-Summary Slides: Chapter - Focus & Intensity
+https://playbook.samaltman.com/
+
+Focus & Intensity
 
 Slide 1:
 Title: Focus & Intensity

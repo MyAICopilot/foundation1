@@ -1,4 +1,6 @@
-Summary Slides: Part I - The Idea
+https://playbook.samaltman.com/
+
+The Idea
 
 Slide 1:
 Topic: The Idea

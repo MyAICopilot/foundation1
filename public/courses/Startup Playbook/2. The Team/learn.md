@@ -1,4 +1,6 @@
-Summary Slides: Part II - A Great Team
+https://playbook.samaltman.com/
+
+A Great Team
 
 Slide 1:
 

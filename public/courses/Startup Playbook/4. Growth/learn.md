@@ -1,4 +1,6 @@
-Summary Slides: Growth Chapter from "Startup Playbook" by Sam Altman
+https://playbook.samaltman.com/
+
+Growth
 
 Slide 1:
 Topic: Growth

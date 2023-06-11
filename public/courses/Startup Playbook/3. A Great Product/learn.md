@@ -1,4 +1,6 @@
-Summary Slides: Chapter - A GREAT PRODUCT
+https://playbook.samaltman.com/
+
+A GREAT PRODUCT
 
 Slide 1:
 Title: The Secret to Success
