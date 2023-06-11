@@ -10,26 +10,26 @@ import "./styles/App.css";
 
 const courseData = [
   {
-    name: "Course 1",
+    name: "Money stuff- Matt Levine",
     topics: ["Topic 1.1", "Topic 1.2", "Topic 1.3"],
   },
   {
-    name: "Course 2",
-    topics: ["Topic 2.1", "Topic 2.2"],
+    name: "Financial Management",
+    topics: ["Overview", "Financial Statements"],
   },
   {
     name: "Startup Playbook",
     topics: [
-      "1. The Idea",
-      "2. The Team",
-      "3. A Great Product",
-      "4. Growth",
-      "5. Focus and Intensity",
-      "6. Jobs of CEO",
-      "7. Hiring and Managing",
-      "8. Competitors",
-      "9. Making Money",
-      "10. Fundarising",
+      "The Idea",
+      "The Team",
+      "A Great Product",
+      "Growth",
+      "Focus and Intensity",
+      "Jobs of CEO",
+      "Hiring and Managing",
+      "Competitors",
+      "Making Money",
+      "Fundarising",
     ],
   },
   // Add more courses as needed
