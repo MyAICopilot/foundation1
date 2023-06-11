@@ -18,8 +18,8 @@ const courseData = [
     topics: ["Topic 2.1", "Topic 2.2"],
   },
   {
-    name: "Course 3",
-    topics: ["Topic 3.1", "Topic 3.2"],
+    name: "Startup Playbook",
+    topics: ["The Idea", "The Team"],
   },
   // Add more courses as needed
 ];
