@@ -19,7 +19,18 @@ const courseData = [
   },
   {
     name: "Startup Playbook",
-    topics: ["The Idea", "The Team"],
+    topics: [
+      "1. The Idea",
+      "2. The Team",
+      "3. A Great Product",
+      "4. Growth",
+      "5. Focus and Intensity",
+      "6. Jobs of CEO",
+      "7. Hiring and Managing",
+      "8. Competitors",
+      "9. Making Money",
+      "10. Fundarising",
+    ],
   },
   // Add more courses as needed
 ];
