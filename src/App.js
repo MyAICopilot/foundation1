@@ -49,6 +49,8 @@ function App() {
   const [fileClicked, setFileClicked] = useState(false);
   const [activeCourse, setActiveCourse] = useState(null);
   const [activeTopic, setActiveTopic] = useState(null);
+  // Define a new state variable to hold the chat history
+  const [chatHistory, setChatHistory] = useState("");
 
   const handleTopicClick = (courseIndex, topicIndex) => {
     setActiveCourse(courseIndex);
@@ -76,27 +78,58 @@ function App() {
       setUser(userData);
     }, 1000);
   };
-
-  ///////////////////////////  call from Chat  /////////////////////////////
+  ////////////////////////////////// call from chat ///////////////////////
   const handleSendMessage_chat = async (inputValue = false) => {
     if (inputValue.trim() === "") return;
     const words = inputValue.trim().split(" ");
-    // Specify the maximum number of words allowed
-    const maxWords = 500;
 
-    if (words.length > maxWords) {
-      alert(`Please enter a message with a maximum of ${maxWords} words.`);
-      return;
+    // Calculate total word count (content + user input)
+    let totalWordsCount = myContent.split(" ").length + words.length;
+
+    // Calculate total words in chatHistory
+    let chatHistoryWordsCount = 0;
+    for (let i = 0; i < chatHistory.length; i++) {
+      chatHistoryWordsCount += chatHistory[i].split(" ").length;
     }
+
+    // Add chatHistoryWordsCount to totalWordsCount
+    totalWordsCount += chatHistoryWordsCount;
+
+    // Maximum tokens we can send to GPT-3
+    const maxTokens = 4096; // Put your actual maximum here
+
+    // Assume that on average, one word is approximately five characters (tokens)
+    const avgWordTokens = 4;
+
+    const maxWords = Math.floor(maxTokens / avgWordTokens);
+    const maxWordsForHistory = maxWords - totalWordsCount;
+    let historyWordsCount = 0;
+    const newChatHistory = [];
+
+    // Iterate over chat history from the most recent message
+    for (let i = chatHistory.length - 1; i >= 0; i--) {
+      const messageWordsCount = chatHistory[i].split(" ").length;
+      if (historyWordsCount + messageWordsCount <= maxWordsForHistory) {
+        historyWordsCount += messageWordsCount;
+        newChatHistory.unshift(chatHistory[i]); // Add the message at the beginning of newChatHistory
+      } else {
+        break;
+      }
+    }
+
+    setChatHistory(newChatHistory);
+    console.log("Updated chat history:", newChatHistory);
 
     // Modify here: Format message with context
     let messageWithContext = inputValue;
     if (mode && myContent) {
-      messageWithContext = `Mode: ${mode}\n ${courseData[activeCourse].name}: ${courseData[activeCourse].topics[activeTopic]} \nContent: ${myContent}\n\nMessage: ${inputValue}`;
+      messageWithContext = `Mode: ${mode}\n ${courseData[activeCourse].name}: ${
+        courseData[activeCourse].topics[activeTopic]
+      } \nContent: ${myContent}\nChat History: ${newChatHistory.join(
+        " "
+      )}\n\nMessage: ${inputValue}`;
     }
 
-    console.log(courseData[activeCourse].name);
-    console.log(courseData[activeCourse].topics[activeTopic]);
     // Format message for display, which doesn't include the content
     let messageForDisplay = inputValue;
     messageForDisplay = `${mode}: ${courseData[activeCourse].name} > ${courseData[activeCourse].topics[activeTopic]}\nUser: ${inputValue}`;
@@ -108,6 +141,7 @@ function App() {
     };
 
     setMessages((prevMessages) => [...prevMessages, newMessage]);
+    setChatHistory((prevChatHistory) => [...prevChatHistory, newMessage.text]); // Add the user's message to the chat history
 
     // Send the user's message to your server
     try {
@@ -120,6 +154,10 @@ function App() {
         id: `A${messageCounter.current}`,
       };
       setMessages((prevMessages) => [...prevMessages, botMessage]);
+      setChatHistory((prevChatHistory) => [
+        ...prevChatHistory,
+        botMessage.text,
+      ]); // Add the bot's message to the chat history
     } catch (error) {
       console.error(error);
       alert("An error occurred while generating a response.");
@@ -129,10 +167,13 @@ function App() {
     messageCounter.current++;
     setInputValue("");
   };
+
   ////////////////////////////////////////////////////////////////////////////////
 
   const handleClearChat = () => {
     setMessages([]);
+    setChatHistory([]); // Clear the chat history
+
     messageCounter.current = 1;
   };
 

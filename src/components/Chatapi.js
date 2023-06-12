@@ -3,7 +3,9 @@ import axios from "axios";
 
 export const sendMessageToServer = async (message) => {
   try {
-    // const response = await axios.post("http://localhost:3010", {
+    // const response = await axios.post(
+    // "http://localhost:3010",
+    // {
     const response = await axios.post(
       "https://intense-oasis-44220.herokuapp.com",
       {
