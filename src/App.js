@@ -187,13 +187,7 @@ function App() {
     // Modify here: Format message with context
     let messageWithContext = inputValue;
     if (mode && myContent) {
-      messageWithContext = `Operating Mode: ${mode}\n Topic name:${
-        courseData[activeCourse].name
-      }: ${
-        courseData[activeCourse].topics[activeTopic]
-      } \nReference-Content: ${myContent}\nChat History between user and AI: ${newChatHistory.join(
-        " "
-      )}\n\n Answer next question based on Operating Mode, Topic and Reference-Content: ${inputValue}. `;
+      messageWithContext = `Mode:: ${mode}\n Topic::${courseData[activeCourse].name}: ${courseData[activeCourse].topics[activeTopic]} \nContent:: ${myContent}\n Question:: ${inputValue}. `;
     }
 
     // Format message for display, which doesn't include the content
