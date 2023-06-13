@@ -193,7 +193,7 @@ function App() {
         courseData[activeCourse].topics[activeTopic]
       } \nReference-Content: ${myContent}\nChat History between user and AI: ${newChatHistory.join(
         " "
-      )}\n\n You must answer next question based on Reference-Content: ${inputValue}. `;
+      )}\n\n Answer next question based on Operating Mode, Topic and Reference-Content: ${inputValue}. `;
     }
 
     // Format message for display, which doesn't include the content
