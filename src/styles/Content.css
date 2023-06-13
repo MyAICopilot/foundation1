@@ -4,8 +4,8 @@
   width: 100%;
   height: 100vh; /* Set a height */
   overflow-y: auto; /* Enable vertical scroll */
-  background-color: #3b3c49;
-  color: #cfcfcf;
+  background-color: #292a33;
+  color: #e6e6e6;
   justify-content: start;
   padding-left: 30px;
   padding-right: 30px;
@@ -16,7 +16,7 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: pre-wrap;
-  line-height: 1.8;
+  line-height: 1.2;
 }
 
 .content-title {

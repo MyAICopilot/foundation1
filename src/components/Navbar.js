@@ -117,16 +117,19 @@ function Navbar({
           <Form onSubmit={(e) => e.preventDefault()}>
             <Form.Group>
               <Form.Label>Name</Form.Label>
-              <Form.Control
+              {/* <Form.Control
                 type="text"
                 name="name"
                 value={settings.name}
                 onChange={handleChange}
                 className="expandable-input"
-              />
+              /> */}
             </Form.Group>
             <Form.Group>
-              <Form.Label>Brief Background</Form.Label>
+              <Form.Label>
+                Brief Background (education, profession, work eperience,
+                hobbies/interests, etc.)
+              </Form.Label>
               <Form.Control
                 as="textarea"
                 name="background"
@@ -136,7 +139,9 @@ function Navbar({
               />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Learning Objectives</Form.Label>
+              <Form.Label>
+                Learning Objectives (personal/career goals){" "}
+              </Form.Label>
               <Form.Control
                 as="textarea"
                 name="objectives"
@@ -145,7 +150,7 @@ function Navbar({
                 className="expandable-input"
               />
             </Form.Group>
-            <Form.Group>
+            {/* <Form.Group>
               <Form.Label>Other Interests</Form.Label>
               <Form.Control
                 as="textarea"
@@ -154,7 +159,7 @@ function Navbar({
                 onChange={handleChange}
                 className="expandable-input"
               />
-            </Form.Group>
+            </Form.Group> */}
             {/* Add more form groups as needed... */}
           </Form>
         </Modal.Body>

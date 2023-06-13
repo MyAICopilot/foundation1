@@ -10,8 +10,72 @@ import "./styles/App.css";
 
 const courseData = [
   {
-    name: "Money stuff- Matt Levine",
-    topics: ["Topic 1.1", "Topic 1.2", "Topic 1.3"],
+    name: "AI",
+    topics: ["AI in everyday life"],
+  },
+  {
+    name: "AR & VR",
+    topics: ["Augmented and Virtual Reality"],
+  },
+  {
+    name: "Crypto and Blockchain",
+    topics: ["Basics of Crypto and Blockchain"],
+  },
+  {
+    name: "Basics of Entrepreneurship",
+    topics: ["Basics of Entrepreneurshipn and Startups"],
+  },
+  {
+    name: "Climate change",
+    topics: ["Climate change and impact"],
+  },
+  {
+    name: "Cultural & Globalization",
+    topics: ["Cultural Intelligence in Globalized world"],
+  },
+  {
+    name: "Data Privacy",
+    topics: ["Data Privacy and Cybersecurity"],
+  },
+  {
+    name: "Digital Marketing",
+    topics: ["Digital Marketing and Social media strategies"],
+  },
+  {
+    name: "Future of work",
+    topics: ["Remote Work and Digital Nomads"],
+  },
+  {
+    name: "IoT and Smart Homes",
+    topics: ["Internet of Things (IoT) and smart homes"],
+  },
+  {
+    name: "Intro to coding",
+    topics: ["Intro to coding and software development"],
+  },
+  {
+    name: "Quantum Computing",
+    topics: ["Intro to Quantum Computing"],
+  },
+  {
+    name: "Machine Learning",
+    topics: ["Machine Learning and Predictive Analytics"],
+  },
+  {
+    name: "Personal Finance",
+    topics: ["Personal Finance and Investing"],
+  },
+  {
+    name: "Renewable Energy Tech",
+    topics: ["Renewable Energy Sources and Tech"],
+  },
+  {
+    name: "Sustainable Living",
+    topics: ["Sustainable living and green tech"],
+  },
+  {
+    name: "Nutrition and Wellness",
+    topics: ["The science of Nutrition and Wellness"],
   },
   {
     name: "Financial Management",
@@ -25,11 +89,11 @@ const courseData = [
       "A Great Product",
       "Growth",
       "Focus and Intensity",
-      "Jobs of CEO",
-      "Hiring and Managing",
-      "Competitors",
-      "Making Money",
-      "Fundarising",
+      // "Jobs of CEO",
+      // "Hiring and Managing",
+      // "Competitors",
+      // "Making Money",
+      // "Fundraising",
     ],
   },
   // Add more courses as needed
@@ -123,11 +187,13 @@ function App() {
     // Modify here: Format message with context
     let messageWithContext = inputValue;
     if (mode && myContent) {
-      messageWithContext = `Mode: ${mode}\n ${courseData[activeCourse].name}: ${
+      messageWithContext = `Operating Mode: ${mode}\n Topic name:${
+        courseData[activeCourse].name
+      }: ${
         courseData[activeCourse].topics[activeTopic]
-      } \nContent: ${myContent}\nChat History: ${newChatHistory.join(
+      } \nReference Content: ${myContent}\nChat History between user and AI: ${newChatHistory.join(
         " "
-      )}\n\nMessage: ${inputValue}`;
+      )}\n\Next question: ${inputValue}`;
     }
 
     // Format message for display, which doesn't include the content
