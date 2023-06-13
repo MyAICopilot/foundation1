@@ -50,7 +50,7 @@ const courseData = [
     topics: ["Internet of Things (IoT) and smart homes"],
   },
   {
-    name: "Intro to coding",
+    name: "Intro to Coding",
     topics: ["Intro to coding and software development"],
   },
   {
