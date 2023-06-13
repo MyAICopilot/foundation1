@@ -191,9 +191,9 @@ function App() {
         courseData[activeCourse].name
       }: ${
         courseData[activeCourse].topics[activeTopic]
-      } \nReference Content: ${myContent}\nChat History between user and AI: ${newChatHistory.join(
+      } \nReference-Content: ${myContent}\nChat History between user and AI: ${newChatHistory.join(
         " "
-      )}\n\Next question: ${inputValue}`;
+      )}\n\n You must answer next question based on Reference-Content: ${inputValue}. `;
     }
 
     // Format message for display, which doesn't include the content
