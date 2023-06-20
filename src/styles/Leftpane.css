@@ -1,8 +1,8 @@
 .left-pane {
   overflow: auto;
   border: none;
-  background-color: #202123;
-  color: #d5d5da;
+  background-color: #ffffff;
+  color: #000000;
   height: 95%;
   min-width: 150px;
   padding-left: 10px;
@@ -14,8 +14,8 @@
   font-weight: bold;
   text-align: left;
   margin-bottom: 20px;
-  color: #9294b9;
-  background-color: #2d303b;
+  color: #000000;
+  background-color: #e2e2e2;
   padding: 10px;
   border-radius: 20px;
   height: 40px;
@@ -24,23 +24,23 @@
 .left-pane h3 {
   font-size: 16px;
   font-weight: bold;
-  color: #d5d5da;
+  color: #000000;
   text-align: left;
   border-radius: 10px;
   padding: 5px;
 }
 
 .course:hover {
-  background-color: #2e2e35;
+  background-color: #e4e4e4;
 }
 
 .topic:hover {
-  background-color: #5e5f75;
+  background-color: #c0c0c0;
 }
 
 .active-topic {
-  background-color: #57586d;
-  color: #f9f9ff;
+  background-color: #c0c0c0;
+  color: #000000;
 }
 
 .course {
@@ -52,7 +52,7 @@
 }
 
 .topic {
-  color: #ececf1;
+  color: #000000;
   margin-left: 5px;
   margin-bottom: 5px;
   padding: 2px;

@@ -2,17 +2,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #202123;
+  background-color: #ffffff;
   padding: 0px;
   width: 100%;
   height: 5%; /* Adjust the height value as needed */
   border: #ececf1;
-  border-bottom: 1px solid #40414f; /* Add border style */
+  border-bottom: 1px solid #b6b6b6; /* Add border style */
 }
 
 .nav-item {
   text-decoration: none;
-  color: #9294b9;
+  color: #000000;
   font-size: 18px;
   flex-grow: 1; /* Added */
   height: 30px;
@@ -25,22 +25,22 @@
 }
 
 .nav-item:hover {
-  background-color: #32333d;
+  background-color: #d1d1d1;
   height: 30px;
   border-radius: 20px;
 }
 
 .nav-item.active {
   text-decoration: none;
-  background-color: #515264;
-  color: #b3b5e6;
+  background-color: #c4c4c4;
+  color: #000000;
 
   height: 30px;
   border-radius: 20px;
 }
 
 .link-disabled {
-  background-color: #40414f !important;
+  background-color: #838383;
   color: #575656;
   height: 30px;
   border-radius: 20px;
@@ -48,8 +48,8 @@
 }
 
 .account-modal .modal-content {
-  color: #ffffff;
-  background-color: #40414f;
+  color: #000000;
+  background-color: #d6d6d6;
   width: 800px;
 }
 
@@ -59,6 +59,6 @@
   max-height: 200px;
   min-width: 750px;
   max-width: 750px;
-  background-color: #d4d4d4;
+  background-color: #ffffff;
   margin-bottom: 30px;
 }

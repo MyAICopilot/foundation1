@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   height: 95%;
-  background-color: #202123;
+  background-color: #ffffff;
 }
 
 .message-box {
@@ -33,22 +33,22 @@
 }
 
 .user-message {
-  background-color: #2c2d36;
+  background-color: #f1f1f1;
   margin-top: 10px;
-  color: #e1e6ee;
+  color: #000000;
 }
 
 .bot-message {
-  background-color: #3b3c49;
+  background-color: #dddddd;
   margin-top: 10px;
-  color: #e1e6ee;
+  color: #000000;
 }
 
 .input-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #202123;
+  background-color: #ffffff;
   margin-top: auto;
   margin-bottom: 10px;
   margin-left: 20px;
@@ -64,8 +64,8 @@
   min-height: 70px;
   max-height: 200px;
   min-width: 0;
-  background-color: #2a2b35;
-  color: #e4e4e4;
+  background-color: #ffffff;
+  color: #000000;
   border: #64657a;
   border-width: 1px;
   border-style: solid;
@@ -77,18 +77,18 @@
 .input-box button {
   padding: 10px 10px;
   border-radius: 12px;
-  background-color: #56576b;
-  color: #ffffff;
+  background-color: #e0e0e0;
+  color: #505050;
   cursor: pointer;
   margin-right: 10px;
   border-width: 1px;
-  border-color: #233f3f;
+  border-color: #c9c9c9;
 }
 
 .input-box :hover {
-  border-color: #8788a3;
+  border-color: #e0e0e0;
   border-width: 1px;
-  background-color: #3b3d49;
+  background-color: #eeeeee;
 }
 
 .toolpane-container {
@@ -100,25 +100,25 @@
   border-radius: 5px; /* Add border radius */
   height: 40px;
   font-size: 14px;
-  background-color: #202123;
+  background-color: #ffffff;
 }
 
 .toolpane-button {
   font-size: 14px;
-  background-color: #56576b;
-  color: #e1e6ee;
+  background-color: #e7e7e7;
+  color: #000000;
   border-radius: 15px;
   border-width: 2px;
-  border-color: #767894;
+  border-color: #d4d4d4;
   width: 100px;
   height: 28px;
   margin-left: 15px;
 }
 
 .toolpane-button:hover {
-  border-color: #767894;
-  background-color: #3b3d49;
-  color: #ffffff;
+  border-color: #bebebe;
+  background-color: #dadada;
+  color: #000000;
   border-width: 2px;
 }
 .toolpane-left {

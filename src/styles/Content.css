@@ -4,8 +4,8 @@
   width: 100%;
   height: 100vh; /* Set a height */
   overflow-y: auto; /* Enable vertical scroll */
-  background-color: #292a33;
-  color: #e6e6e6;
+  background-color: #ffffff;
+  color: #000000;
   justify-content: start;
   padding-left: 30px;
   padding-right: 30px;
@@ -22,8 +22,8 @@
 .content-title {
   font-size: 18px;
   font-weight: bold;
-  color: #9294b9;
-  background-color: #282a33;
+  color: #000000;
+  background-color: #e6e6e6;
   margin-top: 5px;
   padding: 10px;
   border-radius: 20px;

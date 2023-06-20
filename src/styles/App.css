@@ -3,7 +3,7 @@
   height: 100vh;
   overflow: hidden; /* Prevent container from scrolling */
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #202123;
+  background-color: #ffffff;
 }
 
 .panes-container {
@@ -17,6 +17,6 @@
 .my-swal {
   max-width: 300px;
   height: 200px;
-  background-color: #2d2a49;
+  background-color: #dfdfdf;
   color: #c2c2c2;
 }
