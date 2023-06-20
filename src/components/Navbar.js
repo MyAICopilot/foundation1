@@ -106,11 +106,10 @@ function Navbar({
       >
         <Modal.Header closeButton>
           <div>
-            <Modal.Title>Account Settings</Modal.Title>
-            <p>
-              Please add some information so that the AI can generate
-              personalized results for you
-            </p>
+            <Modal.Title>
+              Account Settings (THIS IS WORK IN PROGRESS... )
+            </Modal.Title>
+            <p></p>
           </div>{" "}
         </Modal.Header>
         <Modal.Body>
