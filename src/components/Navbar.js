@@ -78,7 +78,7 @@ function Navbar({
           Quiz
         </a>
 
-        <a
+        {/* <a
           href="#"
           className={`nav-item ${mode === "Apply" ? "active" : ""} ${
             isWaitingForResponse ? "link-disabled" : ""
@@ -86,7 +86,7 @@ function Navbar({
           onClick={(e) => handleLinkClick(e, handleApply)}
         >
           Apply
-        </a>
+        </a> */}
 
         <a
           href="#"
