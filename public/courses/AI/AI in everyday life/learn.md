@@ -1,129 +1,33 @@
-**1. Introduction to AI**
+The New York Times Paywall
+Every newspaper in the country is paying close, close attention [to the Times paywall], wondering if they can get readers of online news to pay. Is that the future, or a desperate attempt to recreate the past?. . . Will paywalls work for newspapers?
+— Tom Ashbrook, host of On Point, National Public Radio1
 
-Definition:
+On March 28, 2011, The New York Times (The Times) website became a restricted site. The home page and section front pages were unrestricted, but users who exceeded the allotted “free quota” of 20 articles for a month were directed to a web page where they could purchase a digital subscription.
+The paywall was launched earlier on March 17, 2011, in Canada, which served as the testing ground to detect and resolve possible problems before the global launch. The Times website had been mostly free for its entire existence, except for a few months in 2006–2007 when TimesSelect was launched. Traditional newspapers had been struggling to maintain profitability in the online medium, and they were eager to see how the public would react to the creation of a paywall at the most popular news website in the U.S.
+Martin Nisenholtz, the senior vice president of Digital Operations at The Times, was optimistic about the willingness of users to pay:
+I think the majority of people are honest and care about great journalism and The New York Times. When you look at the research that we’ve done, tons of people actually say, “Jeez, we’ve felt sort of guilty getting this for free all these years. We actually want to step up and pay, because we know we’re supporting a valuable institution.2
 
-- Artificial Intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think and learn like humans.
+However, many commentators, both in the blogosphere and in the traditional media, were openly critical of this approach. Michael DeGusta, a blogger, represented the critics’ view: “It’s sad that instead of competing for the future by pricing for the digital age, The Times has opted to fight an inevitably doomed battle to hold on to the past.”3
 
-Examples:
+Professors Vineet Kumar, Bharat Anand, Sunil Gupta and Felix Oberholzer-Gee prepared this case with the help of Research Associate Dharmishta Rood. This case was developed from published sources, and the presentation of some data have been simplified to aid in classroom discussion. HBS cases are developed solely as the basis for class discussion. Cases are not intended to serve as endorsements, sources of primary data, or illustrations of effective or ineffective management.
 
-- Virtual personal assistants like Siri, Alexa, and Google Assistant that respond to voice commands and perform tasks.
-- Social media algorithms that curate personalized news feeds based on user preferences and behaviors.
+Copyright © 2012, 2013 President and Fellows of Harvard College. To order copies or request permission to reproduce materials, call 1-800-545- 7685, write Harvard Business School Publishing, Boston, MA 02163, or go to www.hbsp.harvard.edu/educators. This publication may not be digitized, photocopied, or otherwise reproduced, posted, or transmitted, without the permission of Harvard Business School.
 
-**2. AI in Communication**
+512-077 The New York Times Paywall
 
-AI-powered Chatbots:
+Mathew Ingram of GigaOm considered The Times paywall as a stopgap arrangement and went on to say, “If paywall is your only strategy, then you are doomed.”4 Katharine Weymouth, publisher of The Washington Post, another major newspaper, strongly resisted a paywall:
+For us, we believe at the moment it doesn’t make sense. We are making a bet for the long term. We want to be around as The Washington Post for a long time and many generations to come, and at the moment, we think that the best way to do that is to have a free website that is open to everybody and attract as many people as we can to spend as much time as they can with our journalism, and assume that that will bring them back for more.5
 
-Definition:
+By December 2011, digital subscribers for The Times grew to 390,000, and Arthur Sulzberger, Jr., the company’s chairman, described the paywall as a success that represented “a robust new revenue stream.”6
+However the long-term prospects of paywalls remained uncertain. The subscriber growth was slowing down, and many of the paid subscribers of The Times were enticed by the introductory offer of 99 cents for a 4-week subscription. A previous experiment with a paywall, TimesSelect, was abandoned in 2007 after The Times secured 227,000 paying customers.
+Was the paywall a good idea for the long-term? Would it provide a foundation for a sustainable business model as The Times approached an ever-evolving technology and media landscape?
 
-- Chatbots are computer programs that use AI to simulate human-like conversations.
+Company Background
+The New York Times Company was a leading global multimedia news and information company with 2011 revenues of $2.3 billion and an operating profit of $57 million, and operated The New York Times, the International Herald Tribune, The Boston Globe, and About.com. (See Exhibit 1 for company structure, Exhibit 2 for business units and their revenues, and Exhibit 3 for company financials.) The company defined its core purpose as “enhance[ing] society by creating, collecting and distributing high quality news, information and entertainment.”7
+The New York Times, the flagship daily newspaper of the company, was founded on September 18, 1851, by journalist and politician Henry Jarvis Raymond, and former banker George Jones. By 2011, the newspaper had won 106 Pulitzer Prizes, the most of any news organization. Reflecting on The Times’s importance, Michael Hirschorn, the contributing editor of the Atlantic, remarked:
+The Times still, I think to a remarkable degree, does set the agenda. You really can trace almost any major story these days to something that originally appeared in The Times. The problem is that once it reaches the public, they may not even know it came from The Times.8
 
-Examples:
-
-- Customer support chatbots that provide instant assistance and answer frequently asked questions.
-- Language translation chatbots that help bridge communication gaps between people speaking different languages.
-
-Speech Recognition:
-
-Definition:
-
-- Speech recognition is the technology that converts spoken words into written text.
-
-Examples:
-
-- Voice-to-text applications that transcribe spoken words into text, making it easier to write emails or messages.
-- Voice assistants that understand and respond to spoken commands, enabling hands-free control of devices.
-
-**3. AI in Entertainment**
-
-Recommendation Systems:
-
-Definition:
-
-- Recommendation systems use AI algorithms to suggest content based on user preferences and behavior.
-
-Examples:
-
-- Streaming platforms like Netflix and Spotify that recommend movies, TV shows, and music based on user interests.
-- E-commerce websites that suggest products based on previous purchases or browsing history.
-- Virtual Reality (VR) and Augmented Reality (AR):
-
-Definition:
-
-- VR creates a simulated environment, while AR overlays digital content onto the real world.
-
-Examples:
-
-- VR gaming experiences that immerse players in virtual worlds.
-- AR applications like Pokémon Go that overlay digital characters onto the physical environment.
-
-**4. AI in Healthcare**
-
-Medical Diagnosis:
-
-Definition:
-
-- AI algorithms analyze medical data to aid in diagnosing diseases or conditions.
-
-Examples:
-
-- AI-based systems that interpret medical images (e.g., X-rays, MRIs) to detect abnormalities or tumors.
-- Chatbots that provide initial triage for patients, asking relevant questions and suggesting next steps.
-
-Drug Discovery:
-
-Definition:
-
-- AI algorithms analyze vast amounts of data to identify potential drug candidates.
-
-Examples:
-
-- AI-powered systems that analyze molecular structures to predict the effectiveness of potential drugs.
-- AI algorithms that search existing databases to find repurposing opportunities for existing drugs.
-
-**5. AI in Transportation**
-
-Autonomous Vehicles:
-
-Definition:
-
-- Autonomous vehicles use AI algorithms to navigate and operate without human intervention.
-
-Examples:
-
-- Self-driving cars that use sensors, cameras, and AI algorithms to perceive and respond to their environment.
-- Delivery robots that navigate sidewalks and streets to transport packages to their destinations.
-
-Traffic Optimization:
-
-Definition:
-
-- AI algorithms optimize traffic flow and reduce congestion in transportation networks.
-
-Examples:
-
-- Adaptive traffic signal control systems that adjust signal timings based on real-time traffic conditions.
-- Route optimization applications that suggest the fastest and most efficient routes for drivers.
-
-**6. AI in Finance**
-
-Fraud Detection:
-
-Definition:
-
-- AI algorithms analyze patterns and detect anomalies to identify potential fraudulent activities.
-
-Examples:
-
-- AI systems that monitor financial transactions and flag suspicious activities, such as unauthorized access or unusual spending patterns.
-- AI-powered chatbots that verify customer identities and detect potential phishing attempts.
-
-Automated Trading:
-
-Definition:
-
-- AI algorithms make investment decisions and execute trades without human intervention.
-
-Examples:
-
-- Algorithmic trading systems that use AI to analyze market data and execute buy/sell orders at optimal times.
-- Robo-advisors that use AI algorithms to provide personalized investment advice based on individual goals and risk profiles.
+In spite of its prize-winning journalism, The Times was facing significant pressures. Its subscription and revenues had steadily declined over the years (see Exhibits 3 and 4). Its advertising revenues in 2011 were down by over 6% compared with 2010 ad revenues, and in spite of cost cutting, the operating profit in 2011 was 76% less than the previous year. In January 2012, the company sold its Regional Media Group consisting of 16 regional newspapers for $143 million in cash.9
+The Newspaper Industry
+The New York Times was not alone in feeling this pressure—the entire newspaper industry was facing significant challenges. Overall circulation in the industry for both weekday and weekend newspapers was declining (Exhibit 5). Traditional sources of newspaper revenues—subscription, retail, and classified advertising—were also declining (Exhibit 6). In contrast, most of the costs for editorial staff, production, and distribution were fixed and had very little room for reduction. Table A shows the revenue and cost structure of a typical U.S. newspaper.
+Table A Revenue and Cost Breakdown of a Typical U.S. Newspaper, circa 2010

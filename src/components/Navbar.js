@@ -4,12 +4,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/Navbar.css";
 
 function Navbar({
+  handleDoc,
   handleLearn,
   handleQuiz,
   handleApply,
   mode,
   loading,
   isWaitingForResponse,
+  setmyContent,
+  documentContent,
 }) {
   const [showModal, setShowModal] = useState(false);
   const [settings, setSettings] = useState({
@@ -45,6 +48,14 @@ function Navbar({
     if (!loading) handler();
   };
 
+  const handleRefDocumentClick = (e) => {
+    e.preventDefault();
+    if (!loading) {
+      handleDoc();
+      setmyContent(documentContent);
+    }
+  };
+
   return (
     <>
       <nav className="navbar">
@@ -58,7 +69,15 @@ function Navbar({
         >
           Help
         </a>
-
+        <a
+          href="#"
+          className={`nav-item ${mode === "Doc" ? "active" : ""} ${
+            isWaitingForResponse ? "link-disabled" : ""
+          }`}
+          onClick={handleRefDocumentClick}
+        >
+          Ref Document
+        </a>
         <a
           href="#"
           className={`nav-item ${mode === "Learn" ? "active" : ""} ${
@@ -78,7 +97,7 @@ function Navbar({
           Quiz
         </a>
 
-        {/* <a
+        <a
           href="#"
           className={`nav-item ${mode === "Apply" ? "active" : ""} ${
             isWaitingForResponse ? "link-disabled" : ""
@@ -86,7 +105,7 @@ function Navbar({
           onClick={(e) => handleLinkClick(e, handleApply)}
         >
           Apply
-        </a> */}
+        </a>
 
         <a
           href="#"
@@ -106,16 +125,14 @@ function Navbar({
       >
         <Modal.Header closeButton>
           <div>
-            <Modal.Title>
-              Account Settings (THIS IS WORK IN PROGRESS... )
-            </Modal.Title>
+            <Modal.Title>Account Settings</Modal.Title>
             <p></p>
           </div>{" "}
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={(e) => e.preventDefault()}>
             <Form.Group>
-              <Form.Label>Name</Form.Label>
+              {/* <Form.Label>Name</Form.Label> */}
               {/* <Form.Control
                 type="text"
                 name="name"
@@ -126,8 +143,8 @@ function Navbar({
             </Form.Group>
             <Form.Group>
               <Form.Label>
-                Brief Background (education, profession, work eperience,
-                hobbies/interests, etc.)
+                Brief background in few lines (education, profession, work
+                experience, hobbies/interests, etc.).
               </Form.Label>
               <Form.Control
                 as="textarea"
@@ -139,7 +156,7 @@ function Navbar({
             </Form.Group>
             <Form.Group>
               <Form.Label>
-                Learning Objectives (personal/career goals){" "}
+                Learning objectives (personal/career goals){" "}
               </Form.Label>
               <Form.Control
                 as="textarea"

@@ -1,76 +1,213 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Button } from "react-bootstrap"; // or your preferred UI library
+import Docxtemplater from "docxtemplater";
+import * as mammoth from "mammoth/mammoth.browser";
+import JSZip from "jszip";
 import { Collapse } from "react-collapse";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 import "../styles/Leftpane.css";
+import { getDocument, GlobalWorkerOptions } from "pdfjs-dist";
+import { pdfjsWorker } from "pdfjs-dist/webpack";
 
-function Leftpane({ courseData, onTopicClick }) {
-  const [activeCourse, setActiveCourse] = useState(null);
-  const [activeTopic, setActiveTopic] = useState(null);
-  const [expandedCourses, setExpandedCourses] = useState([]); // Add this state
+GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
-  // const handleCourseClick = (courseIndex) => {
-  //   // If the course being clicked is currently active, set the active course to null
-  //   // Otherwise, set the active course to the course being clicked
-  //   setActiveCourse(activeCourse === courseIndex ? null : courseIndex);
-  //   setActiveTopic(null);
-  // };
+function Leftpane({
+  courseData,
+  onTopicClick,
+  mode,
+  setmyContent,
+  setDocumentContent,
+  handleButtonClick,
+  isWaitingForResponse,
+  downloadContent,
+  buttonPrompts,
+}) {
+  const [activeLearnButton, setActiveLearnButton] = useState(null);
+  const [activeQuizButton, setActiveQuizButton] = useState(null);
+  const [activeApplyButton, setActiveApplyButton] = useState(null);
+  const [fileName, setFileName] = useState(null); // Add this line
 
-  const handleCourseClick = (courseIndex) => {
-    setActiveCourse(courseIndex);
-    setActiveTopic(null);
+  const handleFileChange = async (event) => {
+    const file = event.target.files[0];
+    const fileExtension = file.name.split(".").pop().toLowerCase();
 
-    // Handle the expanded courses
-    if (expandedCourses.includes(courseIndex)) {
-      // If the course is already in the array, remove it
-      setExpandedCourses(
-        expandedCourses.filter((index) => index !== courseIndex)
-      );
-    } else {
-      // Otherwise, add it to the array
-      setExpandedCourses([...expandedCourses, courseIndex]);
+    let reader = new FileReader();
+
+    reader.onloadend = async () => {
+      const content = reader.result;
+      let trimmedContent;
+
+      if (fileExtension === "txt") {
+        trimmedContent = content.slice(0, 33050);
+      } else if (fileExtension === "docx") {
+        try {
+          const docxContent = await mammoth.extractRawText({
+            arrayBuffer: content,
+          });
+          trimmedContent = docxContent.value.slice(0, 33050);
+        } catch (error) {
+          console.error("Error parsing docx:", error);
+        }
+      } else if (fileExtension === "pdf") {
+        try {
+          const pdf = await getDocument({ data: new Uint8Array(content) })
+            .promise;
+          let textContent = "";
+          for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const text = await page.getTextContent();
+            textContent += text.items.map((item) => item.str).join(" ");
+          }
+          trimmedContent = textContent.slice(0, 33050);
+        } catch (error) {
+          console.error("Error parsing PDF:", error);
+        }
+      } else {
+        console.error("Unsupported file format!");
+        return;
+      }
+
+      setmyContent(trimmedContent);
+      setDocumentContent(trimmedContent);
+      setFileName(file.name);
+    };
+
+    reader.onerror = function (event) {
+      console.error("File could not be read! Code " + event.target.error.code);
+    };
+
+    if (fileExtension === "txt") {
+      reader.readAsText(file);
+    } else if (fileExtension === "docx" || fileExtension === "pdf") {
+      reader.readAsArrayBuffer(file);
     }
   };
 
-  const handleTopicClick = (courseIndex, topicIndex) => {
-    setActiveCourse(courseIndex); // Set the course as active
-    setActiveTopic(topicIndex);
-    onTopicClick(courseIndex, topicIndex);
-  };
+  useEffect(() => {
+    // Reset all active buttons when the mode changes
+    setActiveLearnButton(null);
+    setActiveQuizButton(null);
+    setActiveApplyButton(null);
+  }, [mode]);
 
+  function ModeButton({ name, onClick, active, disabled, highlighted }) {
+    return (
+      <button
+        className={`mode-button ${active ? "active" : ""} ${
+          highlighted ? "highlighted" : ""
+        }`}
+        onClick={onClick}
+        disabled={disabled || isWaitingForResponse} // Added isWaitingForResponse here
+      >
+        {name}
+      </button>
+    );
+  }
+  function ModeContainer({ mode, onButtonClick, active }) {
+    const activeButton =
+      mode === "Learn"
+        ? activeLearnButton
+        : mode === "Quiz"
+        ? activeQuizButton
+        : activeApplyButton;
+    const setActiveButton =
+      mode === "Learn"
+        ? setActiveLearnButton
+        : mode === "Quiz"
+        ? setActiveQuizButton
+        : setActiveApplyButton;
+
+    const learnButtons = [
+      "Create Summary",
+      "List main topics",
+      "Summarize main topics",
+      "Create a slide deck",
+    ];
+    const quizButtons = [
+      "Create multiple choice Q&A",
+      "Create True/False Q&A",
+      "Create open ended Q&A",
+      "Create thought provoking questions",
+    ];
+    const applyButtons = [
+      "How to apply this in my work",
+      "Give examples based on this",
+      "Create actionable steps",
+      "Provide further learning material",
+    ];
+
+    let buttons;
+    if (mode === "Learn") {
+      buttons = learnButtons;
+    } else if (mode === "Quiz") {
+      buttons = quizButtons;
+    } else if (mode === "Apply") {
+      buttons = applyButtons;
+    }
+
+    return (
+      <div className={`mode-container ${mode}`}>
+        {buttons.map((button, index) => (
+          <ModeButton
+            key={index}
+            name={button}
+            active={activeButton === index}
+            onClick={() => {
+              setActiveButton(index);
+              handleButtonClick(mode, buttonPrompts[button]);
+            }}
+            disabled={!active}
+            highlighted={activeButton === index}
+            isWaitingForResponse={isWaitingForResponse} // Added isWaitingForResponse here
+          />
+        ))}
+      </div>
+    );
+  }
   return (
     <div className="left-pane">
-      <h2 className="title-leftpane">Courses</h2>
-      {courseData.map((course, courseIndex) => (
-        <div className="course" key={courseIndex}>
-          <h3 onClick={() => handleCourseClick(courseIndex)}>
-            <FontAwesomeIcon
-              icon={
-                expandedCourses.includes(courseIndex)
-                  ? faChevronUp
-                  : faChevronDown
-              }
-            />{" "}
-            {course.name}{" "}
-          </h3>
-          <Collapse isOpened={expandedCourses.includes(courseIndex)}>
-            {course.topics.map((topic, topicIndex) => (
-              <div
-                key={topicIndex}
-                className={
-                  activeTopic === topicIndex && activeCourse === courseIndex
-                    ? "active-topic topic"
-                    : "topic"
-                }
-                onClick={() => handleTopicClick(courseIndex, topicIndex)}
-              >
-                {topic}
-              </div>
-            ))}
-          </Collapse>
-        </div>
-      ))}
+      <h2 className="title-leftpane">Tool box</h2>
+
+      <input
+        className="upload-button"
+        type="file"
+        accept=".txt,.docx, .pdf"
+        onChange={handleFileChange}
+        style={{ margin: "10px 0" }}
+      />
+      {/* Display the file name */}
+      <div className="filename">
+        {"File Name:  "}
+        {fileName}
+      </div>
+      <h3> Learn </h3>
+      <ModeContainer
+        mode="Learn"
+        onButtonClick={handleButtonClick}
+        active={mode === "Learn"}
+        isWaitingForResponse={isWaitingForResponse}
+      />
+      <h3> Quiz </h3>
+
+      <ModeContainer
+        mode="Quiz"
+        onButtonClick={handleButtonClick}
+        active={mode === "Quiz"}
+        isWaitingForResponse={isWaitingForResponse}
+      />
+      <h3> Apply </h3>
+
+      <ModeContainer
+        mode="Apply"
+        onButtonClick={handleButtonClick}
+        active={mode === "Apply"}
+        isWaitingForResponse={isWaitingForResponse}
+      />
+      <Button className="download-button" onClick={downloadContent}>
+        Download Session in Text file
+      </Button>
     </div>
   );
 }

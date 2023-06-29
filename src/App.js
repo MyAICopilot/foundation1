@@ -13,89 +13,7 @@ const courseData = [
     name: "AI",
     topics: ["AI in everyday life"],
   },
-  {
-    name: "AR & VR",
-    topics: ["Augmented and Virtual Reality"],
-  },
-  {
-    name: "Crypto and Blockchain",
-    topics: ["Basics of Crypto and Blockchain"],
-  },
-  {
-    name: "Basics of Entrepreneurship",
-    topics: ["Basics of Entrepreneurshipn and Startups"],
-  },
-  {
-    name: "Climate change",
-    topics: ["Climate change and impact"],
-  },
-  {
-    name: "Cultural & Globalization",
-    topics: ["Cultural Intelligence in Globalized world"],
-  },
-  {
-    name: "Data Privacy",
-    topics: ["Data Privacy and Cybersecurity"],
-  },
-  {
-    name: "Digital Marketing",
-    topics: ["Digital Marketing and Social media strategies"],
-  },
-  {
-    name: "Future of work",
-    topics: ["Remote Work and Digital Nomads"],
-  },
-  {
-    name: "IoT and Smart Homes",
-    topics: ["Internet of Things (IoT) and smart homes"],
-  },
-  {
-    name: "Intro to Coding",
-    topics: ["Intro to coding and software development"],
-  },
-  {
-    name: "Quantum Computing",
-    topics: ["Intro to Quantum Computing"],
-  },
-  {
-    name: "Machine Learning",
-    topics: ["Machine Learning and Predictive Analytics"],
-  },
-  {
-    name: "Personal Finance",
-    topics: ["Personal Finance and Investing"],
-  },
-  {
-    name: "Renewable Energy Tech",
-    topics: ["Renewable Energy Sources and Tech"],
-  },
-  {
-    name: "Sustainable Living",
-    topics: ["Sustainable living and green tech"],
-  },
-  {
-    name: "Nutrition and Wellness",
-    topics: ["The science of Nutrition and Wellness"],
-  },
-  {
-    name: "Financial Management",
-    topics: ["Overview", "Financial Statements"],
-  },
-  {
-    name: "Startup Playbook",
-    topics: [
-      "The Idea",
-      "The Team",
-      "A Great Product",
-      "Growth",
-      "Focus and Intensity",
-      // "Jobs of CEO",
-      // "Hiring and Managing",
-      // "Competitors",
-      // "Making Money",
-      // "Fundraising",
-    ],
-  },
+
   // Add more courses as needed
 ];
 
@@ -107,7 +25,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [myContent, setmyContent] = useState("");
-  const [mode, setMode] = useState("Learn"); // Add this line
+  const [mode, setMode] = useState("Doc"); // Add this line
   const [userPrompt, setUserPrompt] = useState(""); // Add this state variable to hold the user prompt
   const [loading, setLoading] = useState(false);
   const [fileClicked, setFileClicked] = useState(false);
@@ -115,7 +33,11 @@ function App() {
   const [activeTopic, setActiveTopic] = useState(null);
   // Define a new state variable to hold the chat history
   const [chatHistory, setChatHistory] = useState("");
+  const [documentContent, setDocumentContent] = useState("");
 
+  const [savedResponses, setSavedResponses] = useState({});
+
+  const modeResponses = useRef({});
   const handleTopicClick = (courseIndex, topicIndex) => {
     setActiveCourse(courseIndex);
     setActiveTopic(topicIndex);
@@ -187,12 +109,14 @@ function App() {
     // Modify here: Format message with context
     let messageWithContext = inputValue;
     if (mode && myContent) {
-      messageWithContext = `Mode:: ${mode}\n Topic::${courseData[activeCourse].name}: ${courseData[activeCourse].topics[activeTopic]} \nContent:: ${myContent}\n Question:: ${inputValue}. `;
+      messageWithContext = `Mode:: ${mode}\nContent:: ${myContent}\n Question:: ${inputValue}. `;
     }
+
+    messageWithContext = `Mode:: ${mode}\nContent:: ${myContent}\n Question:: ${inputValue}. `;
 
     // Format message for display, which doesn't include the content
     let messageForDisplay = inputValue;
-    messageForDisplay = `${mode}: ${courseData[activeCourse].name} > ${courseData[activeCourse].topics[activeTopic]}\nUser: ${inputValue}`;
+    messageForDisplay = `Mode:${mode} \nUser: ${inputValue}`;
 
     const newMessage = {
       text: messageForDisplay,
@@ -228,7 +152,36 @@ function App() {
     setInputValue("");
   };
 
-  ////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////  Call from Leftpane //////////////////////////////////////
+
+  const handleSendMessage_leftpane = async (mode, buttonPrompt) => {
+    // Format message with mode, button prompt, and content
+    let messageWithContext = `Mode:: ${mode}\nContent:: ${documentContent}\nButton Prompt:: ${buttonPrompt}`;
+
+    // Send the user's message to your server
+    try {
+      setIsWaitingForResponse(true);
+      const modeButtonKey = `${mode}-${buttonPrompt}`;
+      // If this mode has a stored response, use it
+      if (modeResponses.current[modeButtonKey]) {
+        setmyContent(modeResponses.current[modeButtonKey]);
+      } else {
+        // Otherwise, request a response from the server
+        const botMessageText = await sendMessageToServer(messageWithContext);
+        setmyContent(botMessageText); // <-- this is the new line you should add
+        // And store the response for future use
+        modeResponses.current[modeButtonKey] = botMessageText;
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred while generating a response.");
+    } finally {
+      setIsWaitingForResponse(false);
+    }
+    messageCounter.current++;
+  };
+
+  //////////////////////////////////////////////////////////////////////////////////
 
   const handleClearChat = () => {
     setMessages([]);
@@ -237,32 +190,129 @@ function App() {
     messageCounter.current = 1;
   };
 
+  const handleDoc = () => {
+    if (mode !== "Doc") {
+      setMode("Doc");
+      modeResponses.current["Doc"] = "";
+    }
+  };
+
   const handleLearn = () => {
-    setMode("Learn");
+    if (mode !== "Learn") {
+      setMode("Learn");
+      modeResponses.current["Learn"] = "";
+    }
   };
 
   const handleQuiz = () => {
-    setMode("Quiz"); // If Quiz corresponds to 'test' mode
+    if (mode !== "Quiz") {
+      setMode("Quiz");
+      modeResponses.current["Quiz"] = "";
+    }
   };
 
   const handleApply = () => {
-    setMode("Apply");
+    if (mode !== "Apply") {
+      setMode("Apply");
+      modeResponses.current["Apply"] = "";
+    }
   };
 
   useEffect(() => {
-    setMode("Learn");
+    setMode("Doc");
   }, []); // Empty dependency array to run only on mount
 
+  useEffect(() => {
+    if (mode === "Doc") {
+      setmyContent(documentContent);
+    }
+  }, [mode, documentContent]);
+
+  const downloadContent = () => {
+    // gather all your data
+    let data = "";
+
+    const modes = ["Learn", "Quiz", "Apply"]; // Define the fixed order of modes here
+    const modeButtonNames = {
+      Learn: [
+        "Create Summary",
+        "List main topics",
+        "Summarize main topics",
+        "Create a slide deck",
+      ],
+      Quiz: [
+        "Create multiple choice Q&A",
+        "Create True/False Q&A",
+        "Create open ended Q&A",
+        "Create thought provoking questions",
+      ],
+      Apply: [
+        "How to apply this in my work",
+        "Give examples based on this",
+        "Create actionable steps",
+        "Provide further learning material",
+      ],
+    }; // Define the button names for each mode
+    modes.forEach((mode) => {
+      modeButtonNames[mode].forEach((buttonName) => {
+        const modeKey = `${mode}-${buttonPrompts[buttonName]}`;
+        if (modeResponses.current[modeKey]) {
+          data += `Mode:: ${mode}\n`;
+          data += `Task:: ${buttonName}\n`;
+          data += `Content:: ${modeResponses.current[modeKey]}\n\n`;
+        }
+      });
+    });
+
+    // create a downloadable text file
+    const element = document.createElement("a");
+    const file = new Blob([data], { type: "text/plain" });
+    element.href = URL.createObjectURL(file);
+    element.download = "myContent.txt";
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+  };
+
+  const buttonPrompts = {
+    "Create Summary": "Create high level summary for this Content",
+    "List main topics":
+      "List the main topics covered(numbered bullets) in this Content",
+    "Summarize main topics":
+      "List main topics covered in the Content and create a good summary for each of those topics",
+    "Create a slide deck":
+      "Create 5-10 slides (with 4-5 bullets in each slide) based on this Content",
+    "Create multiple choice Q&A":
+      "Create up to 20 multiple choice questions. Number each question. List all the answers together after the last question.",
+    "Create True/False Q&A":
+      "Create up to 20 True/False type questions. Number each question. List all the answers together after the last question.",
+    "Create open ended Q&A":
+      "Create up to 20 open ended questions whos answers should be in this Content. Number each question.",
+    "Create thought provoking questions":
+      "Create up to 20 thought provoking questions based on this Content. Number each question. After the last question, provide hints for each question.",
+    "How to apply this in my work":
+      "How can apply the knowledge from this Content in my life and work.",
+    "Give examples based on this":
+      "Create up to 20 examples (better if they are from real-life) to explain different topics convered in this Content.",
+    "Create actionable steps":
+      "Create some next steps or action items from this Content",
+    "Provide further learning material":
+      "what are some good online material to better understand the topics covered in the Content.",
+
+    // add the rest of the button names here
+  };
   return (
     <div className="App">
       <>
         <Navbar
+          handleDoc={handleDoc}
           handleLearn={handleLearn}
           handleQuiz={handleQuiz}
           handleApply={handleApply}
           mode={mode}
           loading={loading}
           isWaitingForResponse={isWaitingForResponse} // Add this line
+          setmyContent={setmyContent}
+          documentContent={documentContent}
         />
         <div className="panes-container">
           <Leftpane
@@ -276,6 +326,10 @@ function App() {
             setmyContent={setmyContent}
             courseData={courseData}
             onTopicClick={handleTopicClick}
+            handleButtonClick={handleSendMessage_leftpane}
+            setDocumentContent={setDocumentContent}
+            downloadContent={downloadContent}
+            buttonPrompts={buttonPrompts} // Pass it here
           />
           <Content
             myContent={myContent}
