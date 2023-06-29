@@ -280,19 +280,19 @@ function App() {
     "Summarize main topics":
       "List main topics covered in the Content and create a good summary for each of those topics",
     "Create a slide deck":
-      "Create 5-10 slides (with 4-5 bullets in each slide) based on this Content",
+      "Create up to 10 slides (with 4-5 bullets in each slide) based on this Content",
     "Create multiple choice Q&A":
-      "Create up to 20 multiple choice questions. Number each question. List all the answers together after the last question.",
+      "Create up to 10 multiple choice questions. Number each question. List all the answers together after the last question.",
     "Create True/False Q&A":
-      "Create up to 20 True/False type questions. Number each question. List all the answers together after the last question.",
+      "Create up to 10 True/False type questions. Number each question. List all the answers together after the last question.",
     "Create open ended Q&A":
-      "Create up to 20 open ended questions whos answers should be in this Content. Number each question.",
+      "Create up to 10 open ended questions whos answers should be in this Content. Number each question.",
     "Create thought provoking questions":
-      "Create up to 20 thought provoking questions based on this Content. Number each question. After the last question, provide hints for each question.",
+      "Create up to 10 thought provoking questions based on this Content. Number each question. After the last question, provide hints for each question.",
     "How to apply this in my work":
       "How can apply the knowledge from this Content in my life and work.",
     "Give examples based on this":
-      "Create up to 20 examples (better if they are from real-life) to explain different topics convered in this Content.",
+      "Create up to 10 examples (better if they are from real-life) to explain different topics convered in this Content.",
     "Create actionable steps":
       "Create some next steps or action items from this Content",
     "Provide further learning material":
